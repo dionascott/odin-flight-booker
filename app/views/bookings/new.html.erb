@@ -1,0 +1,19 @@
+<%= render "flight_info" %>
+
+<%= form_for @booking do |book|%>
+  <% passenger_count = 1 %>
+    <%= book.fields_for :passengers, @booking.passengers do |p| %>
+    <h3>Passenger (<%= passenger_count %>)</h3>
+    <div>
+      <%= p.label :name %>
+      <%= p.text_field :name%>
+    </div>
+    <div>
+      <%= p.label :email %>
+      <%= p.email_field :email %><br />
+    </div>
+    <% passenger_count += 1 %>
+  <% end %>
+  <%= book.hidden_field :flight_id, value: @flight.id %>
+  <%= submit_tag "Book Flight" %>
+<% end %>

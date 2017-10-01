@@ -1,0 +1,16 @@
+<% if @flights %>
+<h3>Flights</h3>
+  <%= form_tag(new_booking_path, method: :get) do %>
+    <% @flights.each do |f| %>
+    <%= f.formatted_dates %>
+    <%= f.from_airport.name %>
+    <%= f.to_airport.name %>
+    <%= radio_button_tag :flight_id, f.id %>
+    <br />
+    <% end %>
+    <%= hidden_field_tag 'passengers', @passenger_number %>
+    <%= submit_tag "Book Flight" %>
+  <% end %>
+<% else %>
+  <p>Nothing here</p>
+<% end %>

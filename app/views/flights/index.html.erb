@@ -1,0 +1,9 @@
+<h1>Flights#index</h1>
+<%= form_tag('/flights', method: :get) do %>
+<div>Number of tickets: <%= select_tag :passengers, options_for_select((1..4)) %></div>
+<div>Dates: <%= select_tag :start, options_for_select(@dates) %></div>
+<div>From: <%= select_tag :from_airport, options_from_collection_for_select(@airports, :id, :name) %></div>
+<div>To: <%= select_tag :to_airport, options_from_collection_for_select(@airports, :id, :name) %></div>
+<div><%= submit_tag "Find Flights" %></div>
+<% end %>
+<%= render "search" %>

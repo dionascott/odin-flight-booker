@@ -1,0 +1,12 @@
+<h3><%= pluralize(@passengers.count, "Passenger") %></h3>
+<% if @passengers.many? %>
+  <% @passengers.each do |p| %>
+  Name: <%= p.name %>
+  Email: <%= p.email %>
+  <% end %>
+<% else %>
+  Name: <%= @passengers.first.name %>
+  Email: <%= @passengers.first.email %>
+<% end %>
+
+<%= render "flight_info" %>
