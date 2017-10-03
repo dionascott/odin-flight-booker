@@ -1,0 +1,17 @@
+Thanks for booking a flight
+===============================================
+
+You have successfully booked a ticket for flight #<%= @flight.id %>.
+Leaving on <%= @flight.start.to_date %>.
+Begin: <%= @flight.from_airport.name %>
+End: <%= @flight.to_airport.name %>.
+<% if @booking.passengers.many? %>
+<%= pluralize(@booking.passengers.count, "Passenger") %>
+  <% @booking.passengers.each do |passenger| %>
+    <%= passenger.name %><br/>
+  <% end %>
+<% end %>
+
+To view your booking, just follow this link: <%= @url %>.
+
+Thanks for booking and have a great day!

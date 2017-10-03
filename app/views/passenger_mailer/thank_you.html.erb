@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thanks for booking a flight</h1>
+    <p>
+      You have successfully booked a ticket for flight #<%= @flight.id %>.<br>
+      Leaving on <%= @flight.start.to_date %>. Begin: <%= @flight.from_airport.name %>
+      End: <%= @flight.to_airport.name %>.
+      <% if @booking.passengers.many? %>
+      <%= pluralize(@booking.passengers.count, "Passenger") %>
+        <% @booking.passengers.each do |passenger| %>
+          <%= passenger.name %><br/>
+        <% end %>
+      <% end %>
+    </p>
+    <p>
+      To view your booking, just follow this link: <%= link_to "Follow to Booking" ,@url %>.
+    </p>
+    <p>Thanks for booking and have a great day!</p>
+  </body>
+</html>

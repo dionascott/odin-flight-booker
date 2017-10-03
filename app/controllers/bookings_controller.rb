@@ -14,6 +14,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     if @booking.save
       flash[:success] = "Booking created."
+      PassengerMailer.thank_you(@booking).deliver_later
       redirect_to @booking
     else
       flash.now[:error] = "Nope"
